@@ -22,7 +22,7 @@
         android:id="@+id/product_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/item_food_padding"
+        android:layout_marginStart="@dimen/item_food_margin_image_text"
         android:ellipsize="marquee"
         android:maxLength="20"
         android:textSize="18sp"

@@ -63,7 +63,7 @@ public class HomeActivity extends AppCompatActivity {
 
     private void initRecycler() {
         //Divider
-        int orientation = DividerItemDecoration.HORIZONTAL;
+        int orientation = DividerItemDecoration.VERTICAL;
         RecyclerView.ItemDecoration decor = new DividerItemDecoration(this, orientation);
         mRvFood.addItemDecoration(decor);
         //Adapter
