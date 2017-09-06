@@ -12,6 +12,12 @@ public class Food implements Parcelable{
     private String mPrice;
     private String mImageThumbnailUrl;
 
+    public Food(String name, String price, String imageThumbnailUrl) {
+        mName = name;
+        mPrice = price;
+        mImageThumbnailUrl = imageThumbnailUrl;
+    }
+
     @SuppressWarnings("WeakerAccess")
     protected Food(Parcel in) {
         mName = in.readString();

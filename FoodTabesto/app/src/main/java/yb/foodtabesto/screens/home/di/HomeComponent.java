@@ -1,6 +1,7 @@
 package yb.foodtabesto.screens.home.di;
 
 import dagger.Component;
+import yb.foodtabesto.app.di.AppComponent;
 import yb.foodtabesto.screens.home.HomeActivity;
 
 /**
@@ -8,6 +9,7 @@ import yb.foodtabesto.screens.home.HomeActivity;
  */
 @HomeScope
 @Component(
+        dependencies = AppComponent.class,
         modules = HomeModule.class
 )
 public interface HomeComponent {

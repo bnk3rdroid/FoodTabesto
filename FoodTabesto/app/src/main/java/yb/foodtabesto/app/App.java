@@ -1,0 +1,27 @@
+package yb.foodtabesto.app;
+
+import android.app.Application;
+
+import yb.foodtabesto.app.di.AppComponent;
+import yb.foodtabesto.app.di.DaggerAppComponent;
+
+public class App extends Application {
+
+    private static AppComponent mComponent;
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        initInjection();
+    }
+
+    private void initInjection() {
+        mComponent = DaggerAppComponent.builder().build();
+        mComponent.inject(this);
+    }
+
+    public static AppComponent getAppComponent() {
+        return mComponent;
+    }
+
+}
