@@ -11,8 +11,9 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:contentDescription="@null"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintDimensionRatio="16:9"
+        android:scaleType="centerCrop"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         tools:src="@color/colorAccent" />
@@ -27,7 +28,7 @@
         android:maxLength="20"
         android:textSize="18sp"
         app:layout_constraintLeft_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/product_image"
         tools:text="Name" />
 
     <TextView
@@ -40,7 +41,17 @@
         app:layout_constraintHorizontal_bias="1"
         app:layout_constraintLeft_toRightOf="@+id/product_name"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/product_image"
         tools:text="9,99 €" />
+
+    <Button
+        android:id="@+id/product_order"
+        android:layout_width="0dp"
+        android:layout_height="?android:attr/actionBarSize"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_margin="@dimen/button_order_margin"
+        android:text="@string/button_order" />
 
 </android.support.constraint.ConstraintLayout>

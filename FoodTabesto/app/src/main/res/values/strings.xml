@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Food App</string>
     <string name="arg_key_food">arg_key_food</string>
+    <string name="button_order">Order product</string>
 </resources>
