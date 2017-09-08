@@ -6,6 +6,7 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -38,6 +39,7 @@ public class HomeActivity extends AppCompatActivity {
     Observable<List<Food>> mFoodDataObservable;
 
     private Disposable mDisposable;
+    private Disposable mItemClickDisposable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +55,7 @@ public class HomeActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         mDisposable.dispose();
+        mItemClickDisposable.dispose();
     }
 
     private void initInjection() {
@@ -68,6 +71,8 @@ public class HomeActivity extends AppCompatActivity {
         mRvFood.addItemDecoration(decor);
         //Adapter
         mRvFood.setAdapter(mAdapter);
+        //Item click (Rx Subject)
+        mItemClickDisposable = mAdapter.getItemClickSubject().subscribe(this::showDetails);
     }
 
     private void displayFoodData() {
@@ -79,7 +84,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void showDetails(Food food) {
-        // TODO: 06/09/2017 open view detail
+        Toast.makeText(this, "ITEM CLICKED (" + food.getName() + ")", Toast.LENGTH_SHORT).show();
     }
 
     private void showLoader() {

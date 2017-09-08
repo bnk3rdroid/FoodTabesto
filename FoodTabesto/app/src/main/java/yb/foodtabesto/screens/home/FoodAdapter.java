@@ -15,6 +15,9 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
+import io.reactivex.subjects.PublishSubject;
+import io.reactivex.subjects.Subject;
 import yb.foodtabesto.R;
 import yb.foodtabesto.data.Food;
 
@@ -26,6 +29,8 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodVH> {
     private List<Food> mData;
 
     private Context mContext;
+
+    private Subject<Food> mProductSubject = PublishSubject.create();
 
     public FoodAdapter(@NonNull List<Food> data) {
         mData = data;
@@ -51,9 +56,13 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodVH> {
         return mData.size();
     }
 
-    public void updateData(@NonNull List<Food> data) {
+    void updateData(@NonNull List<Food> data) {
         mData = data;
         notifyDataSetChanged();
+    }
+
+    Subject<Food> getItemClickSubject() {
+        return mProductSubject;
     }
 
     class FoodVH extends RecyclerView.ViewHolder {
@@ -82,6 +91,11 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodVH> {
 
         void bindImage(@NonNull String url) {
             Glide.with(mContext).load(url).into(mImage);
+        }
+
+        @OnClick(R.id.product)
+        void onProductClicked() {
+            mProductSubject.onNext(mData.get(getAdapterPosition()));
         }
     }
 
