@@ -1,12 +1,12 @@
 package yb.foodtabesto.screens.home;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import java.util.List;
 
@@ -19,6 +19,7 @@ import io.reactivex.disposables.Disposable;
 import yb.foodtabesto.R;
 import yb.foodtabesto.app.App;
 import yb.foodtabesto.data.Food;
+import yb.foodtabesto.screens.details.DetailsActivity;
 import yb.foodtabesto.screens.home.di.DaggerHomeComponent;
 
 /**
@@ -84,7 +85,9 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void showDetails(Food food) {
-        Toast.makeText(this, "ITEM CLICKED (" + food.getName() + ")", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, DetailsActivity.class);
+        intent.putExtra(getString(R.string.arg_key_food), food);
+        startActivity(intent);
     }
 
     private void showLoader() {

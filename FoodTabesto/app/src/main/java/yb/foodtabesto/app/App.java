@@ -4,6 +4,7 @@ import android.app.Application;
 
 import yb.foodtabesto.app.di.AppComponent;
 import yb.foodtabesto.app.di.DaggerAppComponent;
+import yb.foodtabesto.network.di.NetworkModule;
 
 public class App extends Application {
 
@@ -16,7 +17,7 @@ public class App extends Application {
     }
 
     private void initInjection() {
-        mComponent = DaggerAppComponent.builder().build();
+        mComponent = DaggerAppComponent.builder().networkModule(new NetworkModule(this)).build();
         mComponent.inject(this);
     }
 
