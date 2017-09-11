@@ -40,7 +40,7 @@ public class HomeModule {
         for (int i = 0; i < 50; i++) {
             Random ran = new Random();
             int pos = ran.nextInt(mImages.length);
-            foodData.add(new Food("Food " + (i + 1), i + ",99 €", mImages[pos]));
+            foodData.add(new Food(i + 1, "Food " + (i + 1), i + ",99 €", mImages[pos]));
         }
 
         return Observable.just(foodData)

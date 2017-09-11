@@ -8,11 +8,13 @@ import android.os.Parcelable;
  */
 public class Food implements Parcelable{
 
+    private int mId;
     private String mName;
     private String mPrice;
     private String mImageThumbnailUrl;
 
-    public Food(String name, String price, String imageThumbnailUrl) {
+    public Food(int id, String name, String price, String imageThumbnailUrl) {
+        mId = id;
         mName = name;
         mPrice = price;
         mImageThumbnailUrl = imageThumbnailUrl;
@@ -20,6 +22,7 @@ public class Food implements Parcelable{
 
     @SuppressWarnings("WeakerAccess")
     protected Food(Parcel in) {
+        mId = in.readInt();
         mName = in.readString();
         mPrice = in.readString();
         mImageThumbnailUrl = in.readString();
@@ -44,9 +47,14 @@ public class Food implements Parcelable{
 
     @Override
     public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeInt(mId);
         parcel.writeString(mName);
         parcel.writeString(mPrice);
         parcel.writeString(mImageThumbnailUrl);
+    }
+
+    public int getId() {
+        return mId;
     }
 
     public String getName() {
