@@ -4,7 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,6 +37,9 @@ public class DetailsActivity extends AppCompatActivity {
 
     @BindView(R.id.product_image)
     ImageView mImage;
+
+    @BindView(R.id.details_loader)
+    ProgressBar mLoader;
 
     @Inject
     Observable<Order> mOrderObservable;
@@ -90,6 +95,14 @@ public class DetailsActivity extends AppCompatActivity {
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
 
+    private void showLoader() {
+        mLoader.setVisibility(View.VISIBLE);
+    }
+
+    private void hideLoader() {
+        mLoader.setVisibility(View.GONE);
+    }
+
     /**
      * Click on the Order button.
      * # Send POST request on FoodApi /order/{id_product} (fake endpoint).
@@ -98,6 +111,7 @@ public class DetailsActivity extends AppCompatActivity {
      */
     @OnClick(R.id.product_order)
     void onButtonOrderClicked() {
+        showLoader();
         mOrderDisposable = mOrderObservable
                 //Handling http 404 exception because our endpoint is fake.
                 .onErrorResumeNext(throwable -> {
@@ -108,6 +122,9 @@ public class DetailsActivity extends AppCompatActivity {
                     }
                     return Observable.just(new Order());
                 })
-                .subscribe(order -> notifyAboutOrder(order.isSuccessful()));
+                .subscribe(order -> {
+                    notifyAboutOrder(order.isSuccessful());
+                    hideLoader();
+                });
     }
 }
