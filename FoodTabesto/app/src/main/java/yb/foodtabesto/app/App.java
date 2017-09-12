@@ -6,6 +6,9 @@ import yb.foodtabesto.app.di.AppComponent;
 import yb.foodtabesto.app.di.DaggerAppComponent;
 import yb.foodtabesto.network.di.NetworkModule;
 
+/**
+ * Application class.
+ */
 public class App extends Application {
 
     private static AppComponent mComponent;

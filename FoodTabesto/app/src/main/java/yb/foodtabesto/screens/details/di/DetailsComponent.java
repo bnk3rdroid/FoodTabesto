@@ -7,11 +7,12 @@ import yb.foodtabesto.screens.details.DetailsActivity;
 /**
  * DI component for Details.
  */
+@SuppressWarnings("WeakerAccess")
 @DetailsScope
 @Component(
         dependencies = AppComponent.class,
         modules = DetailsModule.class
 )
-interface DetailsComponent {
+public interface DetailsComponent {
     void inject(DetailsActivity detailsActivity);
 }

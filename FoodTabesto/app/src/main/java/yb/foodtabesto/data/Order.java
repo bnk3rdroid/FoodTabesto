@@ -5,4 +5,14 @@ package yb.foodtabesto.data;
  */
 public class Order {
 
+    private boolean mSuccess;
+
+    public Order() {
+        this.mSuccess = true;
+    }
+
+    public boolean isSuccessful() {
+        return mSuccess;
+    }
+
 }
