@@ -3,4 +3,6 @@
     <string name="arg_key_food">arg_key_food</string>
     <string name="button_order">Order product</string>
     <string name="thanks_order">Thanks for your order.</string>
+    <string name="http_404">Http status 404 received but ignored for demonstration purpose.</string>
+    <string name="order_failed">Order failed.</string>
 </resources>

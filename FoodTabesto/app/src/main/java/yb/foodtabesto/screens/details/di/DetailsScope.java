@@ -8,6 +8,7 @@ import javax.inject.Scope;
 /**
  * DI scope for Details.
  */
+@SuppressWarnings("WeakerAccess")
 @Retention(RetentionPolicy.RUNTIME)
 @Scope
 public @interface DetailsScope {
